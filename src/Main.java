@@ -4,24 +4,24 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Entrez la première note");
+        double addnotes = 0;
 
-        int nb1 = scanner.nextInt();
+        System.out.println("Indiquez le nombre de notes pour la moyenne");
 
-        System.out.println("Entrez la deuxième note");
+        int nbnotes = scanner.nextInt();
 
-        int nb2 = scanner.nextInt();
+        for(int i = 1; i<= nbnotes; i++){
+            System.out.println("Indiquez la note " + i + ":");
+            double nombre = scanner.nextInt();
+            addnotes += nombre;
+        }
 
-        System.out.println("Entrez la troisième note");
+        double moyenne = addnotes/nbnotes;
 
-        int nb3 = scanner.nextInt();
-
-        int moyenne = (nb1 +nb2 +nb3)/3 ;
-
-        if (moyenne >= 10){
-            System.out.println("Vous êtes admis");
+        if (moyenne >=10){
+            System.out.println("Avec une moyenne de "+ moyenne +",vous êtes admis");
         }else {
-            System.out.println("Vous êtes ajourné");
+            System.out.println("Avec une moyenne de "+ moyenne +", vous êtes ajourné");
         }
     }
 }
