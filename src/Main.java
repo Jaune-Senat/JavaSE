@@ -3,13 +3,21 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        int rand = 67;
+        int guess = 0;
 
-        System.out.println("Indiquez un entier positif");
+        while (guess != rand){
+            System.out.println("Indiquez un entier compris entre 1 et 100");
+            guess = scanner.nextInt();
 
-        int nb = scanner.nextInt();
-
-        for(int i = 1; i<= 10; i++){
-            System.out.println(i +" x "+ nb + " = " + i*nb);
+            if(guess > rand){
+                System.out.println(guess + " est trop grand");
+            } else if (guess < rand) {
+                System.out.println(guess + " est trop petit");
+            }else {
+                System.out.println(guess + " est la bonne réponse");
+            }
         }
+        scanner.close();
     }
 }
