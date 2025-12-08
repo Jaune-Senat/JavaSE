@@ -2,13 +2,16 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Entrez votre nom");
+        System.out.println("Entrez un nombre");
 
-        String nom = scanner.nextLine();
+        int nombre = scanner.nextInt();
 
-        System.out.println("Votre nom est" + nom);
+        if (nombre %2 == 1){
+            System.out.println("Ce nombre est impair");
+        }else {
+            System.out.println("Ce nombre est pair");
+        }
     }
 }
