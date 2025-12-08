@@ -1,9 +1,14 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.println("Hello World");
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Entrez votre nom");
+
+        String nom = scanner.nextLine();
+
+        System.out.println("Votre nom est" + nom);
     }
 }
