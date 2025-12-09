@@ -1,25 +1,24 @@
-import java.util.Random;
+//import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Random rand = new Random();
-        int math = rand.nextInt(1,100);
-        int guess = 0;
+       Scanner scanner = new Scanner(System.in);
 
-        while (guess != math){
-            System.out.println("Indiquez un entier compris entre 1 et 100");
-            guess = scanner.nextInt();
+        System.out.println("Indiquez combien de nombres vous souhaitez");
+        int size = scanner.nextInt();
+        int[] arr = new int[size];
+        double sum = 0;
 
-            if(guess > math){
-                System.out.println(guess + " est trop grand");
-            } else if (guess < math) {
-                System.out.println(guess + " est trop petit");
-            }else {
-                System.out.println(guess + " est la bonne réponse");
-            }
+        for(int i = 1; i<= size; i++) {
+            System.out.println("indiquez l'entier "+ i);
+            double nb = scanner.nextDouble();
+            sum += nb;
         }
-        scanner.close();
+        double moyenne = sum/size;
+
+        System.out.println("La somme des chiffres du tableau est : " + sum);
+
+        System.out.println("La moyenne des chiffres du tableau est : " + moyenne);
     }
 }
