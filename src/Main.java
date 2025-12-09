@@ -6,6 +6,7 @@ import ExoClass.Specialite;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,7 +14,7 @@ public class Main {
         Filiere marketing = new Filiere("Marketing", "Faire acheter");
         Filiere assDeV = new Filiere("Assistance de vie", "Aidant");
 
-        List<Filiere> filieres = new ArrayList<>(Arrays.asList(cda,marketing,assDeV));
+        List<Filiere> filiereList = new ArrayList<>(Arrays.asList(cda,marketing,assDeV));
 
         Etudiant homer = new Etudiant("Homer", "Simpson", cda );
         Etudiant bart = new Etudiant("Bart", "Simpson", cda);
@@ -21,25 +22,7 @@ public class Main {
         Etudiant marge =   new Etudiant("Marge", "Simpson", marketing);
         Etudiant lisa = new Etudiant("Lisa", "Simpson", marketing);
 
-        List<Etudiant> etudiants = new ArrayList<>(Arrays.asList(homer, bart,vaness,marge,lisa));
-
-        System.out.println("Liste des filières");
-
-        for (Filiere fil : filieres) {
-            System.out.println("\nFiliere : " + fil.getCode());
-
-            boolean trouve = false;
-            int nb =0;
-            for (Etudiant etu : etudiants) {
-                if (etu.getFiliere().getCode().equals(fil.getCode())) {
-                    nb ++;
-                    System.out.println(nb + "- " +etu.getPrenom() + " "  + etu.getNom());
-                    trouve = true;
-                }
-            }if(!trouve){
-                System.out.println("Pas d'inscrit");
-            }
-        }
+        List<Etudiant> etudiantList = new ArrayList<>(Arrays.asList(homer, bart,vaness,marge,lisa));
 
 
         Specialite java = new Specialite("JAVA/JEE");
@@ -47,15 +30,18 @@ public class Main {
         Specialite js = new Specialite("JS");
         Specialite gdp = new Specialite("Gestion de projet");
         Specialite php = new Specialite("PHP");
+        Specialite resp = new Specialite("Responsable");
 
         List<Specialite> specialiteList = new ArrayList<>(Arrays.asList(java,html,js,gdp,php));
 
-        Enseignant tyson = new Enseignant("Tyson",java);
-        Enseignant einstein = new Enseignant("Einstein",php);
-        Enseignant curie = new Enseignant("Curie",java);
-        Enseignant planck = new Enseignant("Planck",js);
+        Enseignant tyson = new Enseignant("Tyson",java,cda);
+        Enseignant einstein = new Enseignant("Einstein",php, cda);
+        Enseignant curie = new Enseignant("Curie",java, cda);
+        Enseignant planck = new Enseignant("Planck",js,cda);
+        Enseignant burns = new Enseignant("Charles Montgomery Burns",resp,cda);
+        Enseignant zak = new Enseignant("Zak Kas",resp,marketing);
 
-        List<Enseignant> enseignantList = new ArrayList<>(Arrays.asList(einstein,curie,planck,tyson));
+        List<Enseignant> enseignantList = new ArrayList<>(Arrays.asList(einstein,curie,planck,tyson, burns,zak));
 
         for (Specialite spec : specialiteList) {
            System.out.println("\n== " + spec.getNom()+ " ==");
@@ -70,6 +56,28 @@ public class Main {
            if(!trouve) {
                System.out.println("Aucun enseignant pour la specialite " + spec.getNom());
            }
+        }
+        for (Filiere fil : filiereList) {
+            System.out.println("\nFiliere : " + fil.getCode());
+
+            int nb =0;
+            boolean trouve = false;
+
+            for(Enseignant ens : enseignantList) {
+                if(Objects.equals(ens.getSpecialite().getNom(), resp.getNom()) && Objects.equals(ens.getFiliere().getCode(), fil.getCode())) {
+                    System.out.println("\nFormateur : " + ens.getNom()+ "\n");
+
+                    for (Etudiant etu : etudiantList) {
+                        if (etu.getFiliere().getCode().equals(fil.getCode())) {
+                            nb++;
+                            System.out.println(nb + "- " + etu.getPrenom() + " " + etu.getNom());
+                            trouve = true;
+                        }
+                    }
+                }
+            }if(!trouve){
+            System.out.println("\nPas d'inscrit");
+            }
         }
     }
 }
