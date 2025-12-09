@@ -5,20 +5,18 @@ public class Main {
     public static void main(String[] args) {
        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Indiquez combien de nombres vous souhaitez");
-        int size = scanner.nextInt();
-        int[] arr = new int[size];
-        double sum = 0;
+        System.out.println("Ecrivez un court texte en une ligne maximum");
+        String phrase = scanner.nextLine();
+        int countV = 0;
 
-        for(int i = 1; i<= size; i++) {
-            System.out.println("indiquez l'entier "+ i);
-            double nb = scanner.nextDouble();
-            sum += nb;
+        for(int i = 0; i<phrase.length(); i++){
+           char c = Character.toLowerCase(phrase.charAt(i));
+           if(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y') {
+               countV++;
+           }
         }
-        double moyenne = sum/size;
 
-        System.out.println("La somme des chiffres du tableau est : " + sum);
-
-        System.out.println("La moyenne des chiffres du tableau est : " + moyenne);
+        System.out.println("Dans la phrase  , il y a " + countV + " voyelles ");
+        scanner.close();
     }
 }
