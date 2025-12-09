@@ -1,4 +1,6 @@
 import ExoClass.Enseignant;
+import ExoClass.Etudiant;
+import ExoClass.Filiere;
 import ExoClass.Specialite;
 
 import java.util.ArrayList;
@@ -7,6 +9,38 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        Filiere cda = new Filiere("CDA", "Concepteur Developpeur");
+        Filiere marketing = new Filiere("Marketing", "Faire acheter");
+        Filiere assDeV = new Filiere("Assistance de vie", "Aidant");
+
+        List<Filiere> filieres = new ArrayList<>(Arrays.asList(cda,marketing,assDeV));
+
+        Etudiant homer = new Etudiant("Homer", "Simpson", cda );
+        Etudiant bart = new Etudiant("Bart", "Simpson", cda);
+        Etudiant vaness =  new Etudiant("Vanessa", "Sultan", marketing);
+        Etudiant marge =   new Etudiant("Marge", "Simpson", marketing);
+        Etudiant lisa = new Etudiant("Lisa", "Simpson", marketing);
+
+        List<Etudiant> etudiants = new ArrayList<>(Arrays.asList(homer, bart,vaness,marge,lisa));
+
+        System.out.println("Liste des filières");
+
+        for (Filiere fil : filieres) {
+            System.out.println("\nFiliere : " + fil.getCode());
+
+            boolean trouve = false;
+            int nb =0;
+            for (Etudiant etu : etudiants) {
+                if (etu.getFiliere().getCode().equals(fil.getCode())) {
+                    nb ++;
+                    System.out.println(nb + "- " +etu.getPrenom() + " "  + etu.getNom());
+                    trouve = true;
+                }
+            }if(!trouve){
+                System.out.println("Pas d'inscrit");
+            }
+        }
+
 
         Specialite java = new Specialite("JAVA/JEE");
         Specialite html = new Specialite("HTML/CSS");
