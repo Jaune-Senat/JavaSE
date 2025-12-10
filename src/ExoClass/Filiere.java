@@ -3,6 +3,7 @@ package ExoClass;
 public class Filiere {
     private String code;
     private String libelle;
+    private Enseignant enseignant;
 
     public Filiere(String code, String libelle) {
         this.code = code;
@@ -19,5 +20,8 @@ public class Filiere {
     }
     public void setLibelle(String libelle) {
         this.libelle = libelle;
+    }
+    public Enseignant getEnseignant() {
+        return enseignant;
     }
 }
