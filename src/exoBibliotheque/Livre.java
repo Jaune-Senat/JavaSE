@@ -36,11 +36,6 @@ public class Livre {
         this.prix = prix;
     }
 
-    /*@Override
-    public String toString() {
-        return STR."Livre{titre='\{titre}' par \{auteur} \n \{prix} €";
-    }*/
-
     @Override
     public String toString() {
         return "Livre : " + titre + ", auteur : " + auteur + ", prix : " + prix + " €";
