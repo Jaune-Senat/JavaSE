@@ -34,4 +34,8 @@ public class Enseignant extends Personne {
     public void setMatiere(String matiere) {
         this.matiere = matiere;
     }
+    @Override
+    public String toString() {
+        return  prenom + " " + nom + " arrivé le : " + dateDebut + " est enseignant en " + matiere;
+    }
 }

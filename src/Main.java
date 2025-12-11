@@ -1,13 +1,16 @@
 
 
 import exoBibliotheque.Livre;
+import exoHeritage.Enseignant;
+import exoHeritage.Etudiant;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
-    Scanner sc = new Scanner(System.in);
+    /*Scanner sc = new Scanner(System.in);
 
     double prixTotal = 0;
 
@@ -32,6 +35,10 @@ public class Main {
         }
 
         System.out.println("== Nombre total des livres dans la bibliotheque : " + bibliotheque.size() + " ==");
-        System.out.println("== Le prix total des livres dans la bibliotheque est : " + prixTotal + " ==");
+        System.out.println("== Le prix total des livres dans la bibliotheque est : " + prixTotal + " ==");*/
+        Etudiant jean = new Etudiant("jean", "philippe","jean.philippe@yahoo.fr", "premiere",16, 12);
+        Enseignant patrick = new Enseignant("patrick", "stewart", "patrick.stewart@alice.fr", LocalDate.now(), null, "Physique");
+
+        System.out.println(patrick);
     }
 }
